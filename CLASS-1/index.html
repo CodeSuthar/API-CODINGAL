@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recipe Explorer</title>
+
+  <!-- ✅ Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+
+  <div class="container py-5">
+    <!-- Heading -->
+    <h1 class="text-center mb-3">🍲 Recipe Explorer</h1>
+    <p class="text-center text-muted">Search for dishes from around the world</p>
+
+    <!-- Search Section -->
+    <div class="input-group mb-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="Enter a recipe name...">
+      <button id="searchBtn" class="btn btn-primary">Search</button>
+    </div>
+
+    <!-- Message Area -->
+    <div id="message" class="text-center mb-3 text-muted"></div>
+
+    <!-- Category Filter Bar -->
+    <div id="categoryBar" class="d-flex justify-content-center mb-4 flex-wrap">
+      <button class="btn btn-outline-secondary m-1" data-category="All">All</button>
+      <button class="btn btn-outline-secondary m-1" data-category="Dessert">Dessert</button>
+      <button class="btn btn-outline-secondary m-1" data-category="Seafood">Seafood</button>
+      <button class="btn btn-outline-secondary m-1" data-category="Beef">Beef</button>
+      <button class="btn btn-outline-secondary m-1" data-category="Chicken">Chicken</button>
+    </div>
+
+
+    <!-- Results Section -->
+    <div id="results" class="row"></div>
+  </div>
+
+  <!-- ✅ Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ Main JavaScript -->
+  <script src="./app.js"></script>
+</body>
+
+</html>
