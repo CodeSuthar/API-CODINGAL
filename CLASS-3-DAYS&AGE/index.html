@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age & Event Calculator</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type='date'] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Date Tools</h2>
+
+        <div class="section">
+            <label for="birthDate">Enter your birthdate:</label>
+            <input type="date" id="birthDate" />
+            <button onclick="calculateAge()">Calculate Age</button>
+            <div class="result" id="ageResult"></div>
+        </div>
+
+        <div class="section">
+            <label for="eventDate">Enter event hdate:</label>
+            <input type="date" id="eventDate" />
+            <button onclick="calculateDays()">Calculate Age</button>
+            <div class="result" id="eventResult"></div>
+        </div>
+    </div>
+    <script>
+        function calculateAge() {
+            let birthDate = new Date(document.getElementById("birthDate").value);
+
+            let today = new Date();
+
+            if (!birthDate || isNaN(birthDate)) {
+                document.getElementById("ageResult").textContent = `Please select a valid date!`;
+                return
+            }
+
+            let age = today.getFullYear()  - birthDate.getFullYear();
+            let monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById("ageResult").textContent = `You are ${age} years old`;
+        }
+
+        function calculateDays() {
+            let eventDate = new Date(document.getElementById("eventDate").value);
+
+            let today = new Date();
+
+            if (!eventDate || isNaN(eventDate)) {
+                document.getElementById("eventResult").textContent = `Please select a valid date!`;
+                return
+            }
+
+            let diffTime = eventDate - today;
+            let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+
+            if (diffDays > 0) {
+                document.getElementById('eventResult').textContent = `${diffDays} days remaining.`
+            } else if (diffDays === 0) {
+                document.getElementById('eventResult').textContent = `The event is today.`
+            } else {
+                document.getElementById('eventResult')('eventResult').textContent = `The event date is passed.`
+            }
+        }
+    </script>
+</body>
+</html>
