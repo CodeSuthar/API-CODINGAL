@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Showcase</title>
+    <style>
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body onload="loadCurrentDateAPOD()">
+    <video id="video-background" autoplay muted loop>
+        <source src="https://cdn.pixabay.com/vimeo/371443863/space-371443863.mp4?width=1280&hash=9c8e1b2a7c3f5e5b8c9d1a2b3c4d5e6f7g8h9i0j" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand p_title" href="#">🎇 CELESTIAL SHOWCASE</a>
+        </div>
+    </nav>
+
+    <header class="h4 text-light p-2">
+        Welcome to the Celestial Showcase!
+        <br>Explore the wonders of the universe through stunning images and videos. Discover the beauty of space and stay updated with the latest astronomical phenomena. Dive into the cosmos and let your curiosity soar! 🌌✨
+    </header>
+
+    <main class="container my-5">
+        <section class="text-center mb-5">
+
+            <article class="glass text-white p-3 mb-4">
+                The APOD (Astronomy Picture of the Day) is a website provided by NASA that features a different image or photograph of our universe each day, along with a brief explanation written by a professional astronomer. The images can range from stunning photographs of galaxies, nebulae, and planets to artistic renderings of astronomical phenomena. The APOD serves as an educational resource and a source of inspiration for astronomy enthusiasts and the general public alike, showcasing the beauty and diversity of the cosmos.
+            </article>
+
+            <div class="row justify-content-center">
+                <div class="col-md-5 mb-2 mb-md-0">
+                    <button class="btn btn-dark btn-lg btn-block" onclick="loadSelectedDateAPOD()">
+                        View APOD for Selected Date
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card mx-auto my-auto text-white" style="max-width: 1080px;">
+            <h5 class="card-header text-center" id="apodTitle">Astronomy Picture of the Day</h5>
+            <div id="apodImage"></div>
+            <div class="card-body">
+                <p class="text-left mb-2 text-white" id="apodDate"></p>
+            </div>
+            <h5 id="apodDescription">
+
+            </h5>
+        </section>
+    </main>
+
+    <footer>
+        A Fun Astronomy Website
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
