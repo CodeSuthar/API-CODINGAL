@@ -1,9 +1,12 @@
+
+
+Celestial showcase · HTML
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Celestial Showcase</title>
     <style>
         * {
@@ -11,509 +14,454 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+ 
         :root {
             --bg1: #050816;
-            --bg2: #111827;
-
-            --glass: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.15);
-
+            --bg2: #0b1120;
+ 
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.10);
+ 
             --text: #f8fafc;
-            --muted: #cbd5e1;
-
-            --accent1: #7c3aed;
-            --accent2: #2563eb;
+            --muted: #94a3b8;
+            --muted2: #cbd5e1;
+ 
+            --accent1: #8b5cf6;
+            --accent2: #3b82f6;
+ 
+            --radius: 6px;
+            --pad: clamp(16px, 4vw, 28px);
         }
-
+ 
         html {
             scroll-behavior: smooth;
         }
-
+ 
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
             color: var(--text);
-
+ 
             background:
-                radial-gradient(circle at top left,
-                    rgba(37, 99, 235, 0.25),
-                    transparent 30%),
-
-                radial-gradient(circle at bottom right,
-                    rgba(124, 58, 237, 0.25),
-                    transparent 30%),
-
-                linear-gradient(135deg,
-                    var(--bg1),
-                    var(--bg2));
+                radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.18), transparent 35%),
+                radial-gradient(circle at 85% 90%, rgba(139, 92, 246, 0.18), transparent 35%),
+                linear-gradient(160deg, var(--bg1), var(--bg2));
         }
-
+ 
         /* STAR BACKGROUND */
-
         body::before {
             content: "";
-
             position: fixed;
             inset: 0;
-
-            background-image:
-                radial-gradient(white 1px, transparent 1px);
-
-            background-size: 40px 40px;
-
-            opacity: 0.12;
-
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 36px 36px;
+            opacity: 0.10;
             pointer-events: none;
-
             z-index: -1;
+            animation: twinkle 6s ease-in-out infinite alternate;
         }
-
-        /* MAIN CONTAINER */
-
+ 
+        @keyframes twinkle {
+            from { opacity: 0.06; }
+            to   { opacity: 0.14; }
+        }
+ 
         .container {
-            width: min(1100px, 92%);
+            width: min(1000px, 92%);
             margin: auto;
         }
-
+ 
         /* NAVBAR */
-
         nav {
             width: 100%;
-
             display: flex;
             justify-content: center;
-            align-items: center;
-
-            padding: 30px 20px;
+            padding: clamp(20px, 5vw, 36px) 16px 8px;
         }
-
+ 
         .navbar-brand {
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
             align-items: center;
-
-            text-align: center;
+            gap: 10px;
             text-decoration: none;
-
             color: white;
-
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-weight: 800;
-
-            letter-spacing: 4px;
-
-            text-shadow:
-                0 0 10px rgba(255, 255, 255, 0.5),
-                0 0 25px rgba(99, 102, 241, 0.6);
-
-            transition: 0.3s ease;
+            font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, #a5b4fc 60%, var(--accent1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.25s ease;
         }
-
+ 
         .navbar-brand:hover {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
-
+ 
         /* HEADER */
-
         header {
             text-align: center;
-
-            max-width: 850px;
-
-            margin: 10px auto 45px;
-
+            max-width: 640px;
+            margin: 4px auto clamp(28px, 5vw, 40px);
             padding: 0 20px;
-
-            line-height: 1.9;
-
-            font-size: 1.05rem;
-
+            line-height: 1.7;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             color: var(--muted);
         }
-
-        /* GLASS EFFECT */
-
+ 
         .glass,
         .card {
             background: var(--glass);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-
-            border-radius: 24px;
-
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.35);
+            border-radius: var(--radius);
         }
-
-        /* INFO CARD */
-
+ 
         .glass {
-            padding: 28px;
-
-            margin-bottom: 35px;
-
-            line-height: 1.9;
-
-            color: var(--muted);
+            padding: var(--pad);
+            margin-bottom: clamp(24px, 5vw, 36px);
+            line-height: 1.8;
+            font-size: 0.92rem;
+            color: var(--muted2);
+            border-radius: 8px;
         }
-
+ 
         /* CONTROLS */
-
         .controls {
             display: flex;
-
             justify-content: center;
-            align-items: center;
-
+            align-items: stretch;
             flex-wrap: wrap;
-
-            gap: 15px;
-
-            margin-bottom: 45px;
+            gap: 10px;
+            margin-bottom: clamp(28px, 5vw, 40px);
         }
-
+ 
         .controls input[type="date"] {
-            padding: 14px 18px;
-
-            min-width: 220px;
-
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-
-            background: rgba(255, 255, 255, 0.08);
-
+            flex: 1 1 200px;
+            max-width: 240px;
+            padding: 11px 14px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
             color: white;
-
-            font-size: 1rem;
-
+            font-size: 0.9rem;
             outline: none;
-
-            transition: 0.25s ease;
+            transition: 0.2s ease;
         }
-
+ 
         .controls input[type="date"]:focus {
-            border-color: rgba(255, 255, 255, 0.35);
-
-            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: var(--glass-hover);
         }
-
+ 
         .controls input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
-
             cursor: pointer;
+            opacity: 0.7;
         }
-
+ 
         .controls button {
-            padding: 14px 24px;
-
-            border: none;
-            border-radius: 14px;
-
+            flex: 1 1 180px;
+            max-width: 220px;
+            padding: 11px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom-color: rgba(0, 0, 0, 0.35);
+            border-radius: 5px;
             cursor: pointer;
-
             color: white;
-
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
-
-            background:
-                linear-gradient(135deg,
-                    var(--accent1),
-                    var(--accent2));
-
+            letter-spacing: 0.2px;
+            background: linear-gradient(180deg, var(--accent1), var(--accent2));
             box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.35);
-
-            transition: 0.25s ease;
+                0 1px 0 rgba(255, 255, 255, 0.15) inset,
+                0 3px 8px rgba(0, 0, 0, 0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
         }
-
+ 
+        .controls button.secondary {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-bottom-color: rgba(0, 0, 0, 0.4);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.06) inset,
+                0 3px 8px rgba(0, 0, 0, 0.25);
+        }
+ 
         .controls button:hover {
-            transform:
-                translateY(-3px) scale(1.03);
-
-            box-shadow:
-                0 12px 30px rgba(0, 0, 0, 0.45);
+            filter: brightness(1.08);
         }
-
+ 
+        .controls button:active {
+            transform: translateY(1px);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.1) inset,
+                0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+ 
         /* APOD CARD */
-
         .card {
             overflow: hidden;
-
-            max-width: 1080px;
-
-            margin: auto auto 50px;
+            max-width: 1000px;
+            margin: 0 auto clamp(30px, 6vw, 50px);
         }
-
-        /* CARD HEADER */
-
+ 
         .card-header {
-            padding: 24px;
-
+            padding: clamp(16px, 3vw, 22px) var(--pad);
             text-align: center;
-
-            font-size: clamp(1.4rem, 3vw, 2rem);
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            background: rgba(255, 255, 255, 0.05);
-
-            border-bottom:
-                1px solid rgba(255, 255, 255, 0.08);
+            font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid var(--border);
         }
-
-        /* IMAGE / VIDEO */
-
+ 
         #apodImage {
             width: 100%;
-
-            background: black;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
-
+ 
         #apodImage img,
         #apodImage iframe {
             width: 100%;
-
+            height: 100%;
             display: block;
-
             border: none;
-
-            max-height: 75vh;
-
-            object-fit: cover;
+            object-fit: contain;
+            background: #000;
         }
-
-        /* CONTENT */
-
+ 
+        #apodImage.loading::after {
+            content: "";
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            border-top-color: var(--accent2);
+            animation: spin 0.8s linear infinite;
+        }
+ 
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+ 
         .card-body {
-            padding: 20px 28px 10px;
+            padding: clamp(16px, 3vw, 22px) var(--pad) 0;
         }
-
+ 
         #apodDate {
-            font-size: 0.95rem;
-
-            color: #d1d5db;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: var(--muted);
+            text-transform: uppercase;
         }
-
+ 
         #apodDescription {
-            padding: 0 28px 30px;
-
-            line-height: 1.9;
-
-            font-size: 1rem;
-
-            color: #e5e7eb;
+            padding: 10px var(--pad) clamp(20px, 4vw, 28px);
+            line-height: 1.85;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--muted2);
         }
-
-        /* FOOTER */
-
+ 
         footer {
             text-align: center;
-
-            padding: 30px 10px;
-
-            color: #9ca3af;
-
-            font-size: 0.95rem;
+            padding: 28px 10px 40px;
+            color: #64748b;
+            font-size: 0.85rem;
         }
-
-        /* SCROLLBAR */
-
+ 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
-
+ 
         ::-webkit-scrollbar-track {
-            background: #0f172a;
+            background: #0b1120;
         }
-
+ 
         ::-webkit-scrollbar-thumb {
-            background:
-                linear-gradient(var(--accent1),
-                    var(--accent2));
-
+            background: linear-gradient(var(--accent1), var(--accent2));
             border-radius: 10px;
         }
-
+ 
         /* MOBILE */
-
-        @media (max-width: 768px) {
-
+        @media (max-width: 640px) {
             .controls {
                 flex-direction: column;
+                align-items: stretch;
             }
-
-            .controls input,
+ 
+            .controls input[type="date"],
             .controls button {
+                max-width: 100%;
                 width: 100%;
+                padding-top: 9px;
+                padding-bottom: 9px;
+                font-size: 0.82rem;
             }
-
+ 
             .glass {
-                padding: 20px;
+                font-size: 0.88rem;
             }
-
-            #apodDescription {
-                font-size: 0.95rem;
+ 
+            #apodImage {
+                aspect-ratio: 4 / 3;
             }
-
+ 
             .navbar-brand {
-                font-size: 2rem;
-
-                letter-spacing: 2px;
+                letter-spacing: 1px;
+            }
+        }
+ 
+        @media (max-width: 400px) {
+            .container {
+                width: 94%;
             }
         }
     </style>
 </head>
-
+ 
 <body onload="loadCurrentDateAPOD()">
     <nav>
         <a class="navbar-brand" href="#">
-            🎇 CELESTIAL SHOWCASE
+            🎇 Celestial Showcase
         </a>
     </nav>
-
-    <header class="h4 text-light p-2">
-        Welcome to the Celestial Showcase!
-        <br>Explore the wonders of the universe through stunning images and videos. Discover the beauty of space and
-        stay updated with the latest astronomical phenomena. Dive into the cosmos and let your curiosity soar! 🌌✨
+ 
+    <header>
+        Explore the wonders of the universe — a new astronomical image or video
+        every day, curated by NASA. Pick a date, or let the cosmos surprise you.
     </header>
-
-    <main class="container my-5">
-        <section class="text-center mb-5">
-
-            <article class="glass text-white p-3 mb-4">
-                The APOD (Astronomy Picture of the Day) is a website provided by NASA that features a different image or
-                photograph of our universe each day, along with a brief explanation written by a professional
-                astronomer. The images can range from stunning photographs of galaxies, nebulae, and planets to artistic
-                renderings of astronomical phenomena. The APOD serves as an educational resource and a source of
-                inspiration for astronomy enthusiasts and the general public alike, showcasing the beauty and diversity
-                of the cosmos.
+ 
+    <main class="container">
+        <section>
+            <article class="glass">
+                The APOD (Astronomy Picture of the Day) is a website provided by NASA that features a
+                different image or photograph of our universe each day, along with a brief explanation
+                written by a professional astronomer — from galaxies and nebulae to planets and artistic
+                renderings of space phenomena.
             </article>
-
-            <div class="controls row justify-content-center">
-                <div>
-                    <div class="col-md-5 mb-2 mb-md-0">
-                        <input type="date" id="apodDatePicker" min="1995-06-16">
-                        <button class="btn btn-dark btn-lg btn-block" onclick="loadSelectedDateAPOD()">
-                            View APOD for Selected Date
-                        </button>
-                        <button class="btn btn-dark btn-lg btn-block" onclick="getRandomDate()">
-                            Discover a Random APOD
-                        </button>
-                    </div>
-                </div>
-        </section>
-
-        <section class="card mx-auto my-auto text-white" style="max-width: 1080px;">
-            <h5 class="card-header text-center" id="apodTitle">Astronomy Picture of the Day</h5>
-            <div id="apodImage"></div>
-            <div class="card-body">
-                <p class="text-left mb-2 text-white" id="apodDate"></p>
+ 
+            <div class="controls">
+                <input type="date" id="apodDatePicker" min="1995-06-16">
+                <button onclick="loadSelectedDateAPOD()">View selected date</button>
+                <button class="secondary" onclick="getRandomDate()">Random discovery</button>
             </div>
-            <h5 id="apodDescription">
-
-            </h5>
+        </section>
+ 
+        <section class="card">
+            <h5 class="card-header" id="apodTitle">Astronomy Picture of the Day</h5>
+            <div id="apodImage" class="loading"></div>
+            <div class="card-body">
+                <p id="apodDate"></p>
+            </div>
+            <p id="apodDescription"></p>
         </section>
     </main>
-
+ 
     <footer>
         A Fun Astronomy Website
     </footer>
+ 
     <script>
         let apiKey = 'gvc5DTOpmhDadofGckuyvyp7fCNBkELiTfvXnn7J';
-
+ 
         async function fetchAPOD(date) {
+            const imageContainer = document.getElementById('apodImage');
+            imageContainer.classList.add('loading');
+            imageContainer.innerHTML = '';
+ 
             try {
                 let url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
-
+ 
                 if (date) {
                     url += `&date=${date}`;
-                } else return error('Date is required');
-
+                } else {
+                    alert('Date is required');
+                    return;
+                }
+ 
                 let response = await fetch(url);
                 let data = await response.json();
-
+ 
                 displayAPOD(data);
-            } catch (error) {
-                console.error('Error fetching APOD:', error);
+            } catch (err) {
+                console.error('Error fetching APOD:', err);
                 alert('Failed to load APOD. Please try again later.');
+            } finally {
+                imageContainer.classList.remove('loading');
             }
         }
-
+ 
         function displayAPOD(data) {
-            document.getElementById('apodTitle').textContent = data.title;
+            document.getElementById('apodTitle').textContent = data.title || 'Astronomy Picture of the Day';
             document.getElementById('apodDate').textContent = `Date: ${data.date}`;
-            document.getElementById('apodDescription').textContent = data.explanation;
-
+            document.getElementById('apodDescription').textContent = data.explanation || '';
+ 
             const apodImageContainer = document.getElementById('apodImage');
             apodImageContainer.innerHTML = '';
-
+ 
             if (data.media_type === 'image') {
                 const img = document.createElement('img');
-                img.src = data.url;
-                img.alt = data.title;
-                img.className = 'card-img-top';
+                img.src = data.hdurl || data.url;
+                img.alt = data.title || 'APOD image';
                 apodImageContainer.appendChild(img);
             } else if (data.media_type === 'video') {
                 const iframe = document.createElement('iframe');
                 iframe.src = data.url;
-                iframe.width = '100%';
-                iframe.height = '500px';
-                iframe.frameBorder = '0';
                 iframe.allowFullscreen = true;
                 apodImageContainer.appendChild(iframe);
             }
         }
-
+ 
         function loadCurrentDateAPOD() {
             const today = new Date();
             const formattedDate = formatDate(today);
+            document.getElementById('apodDatePicker').value = formattedDate;
             fetchAPOD(formattedDate);
         }
-
+ 
         function loadSelectedDateAPOD() {
             const dateInput = document.getElementById('apodDatePicker');
-            if (dateInput) {
-                const selectedDate = dateInput.value;
-                if (selectedDate) {
-                    fetchAPOD(selectedDate);
-                } else {
-                    alert('Please select a date first.');
-                }
+            const selectedDate = dateInput ? dateInput.value : '';
+            if (selectedDate) {
+                fetchAPOD(selectedDate);
             } else {
-                alert('Please click "Select a Date" to choose a date first.');
+                alert('Please select a date first.');
             }
         }
-
+ 
         function formatDate(date) {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
             return `${year}-${month}-${day}`;
         }
-
+ 
         function getRandomDate() {
             const startDate = new Date(1995, 5, 16); // APOD started on June 16, 1995
             const endDate = new Date();
             const randomTime = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
             const randomDate = new Date(randomTime);
-
-            fetchAPOD(formatDate(randomDate));
-        }
-
-        function error(message) {
-            alert(message);
+            const formatted = formatDate(randomDate);
+ 
+            // sync the date picker to the random date
+            document.getElementById('apodDatePicker').value = formatted;
+ 
+            fetchAPOD(formatted);
         }
     </script>
 </body>
-
+ 
 </html>
+ 
